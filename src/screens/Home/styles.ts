@@ -45,7 +45,6 @@ export const styles = StyleSheet.create(
    marginTop: 20,
    marginHorizontal: 20,
   },
-
   emptyListState: {
    fontSize: 16,
    fontWeight: 'bold',

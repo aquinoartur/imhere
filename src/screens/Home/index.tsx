@@ -15,18 +15,16 @@ export function Home() {
   }
 
   function handleRemoveTask({ task }: { task: string }) {
-    Alert.alert(
+    return Alert.alert(
       'Remove Task',
       `Do you really want to remove the task? ${task}`,
       [
         { text: 'Cancel', style: 'cancel', },
         {
           text: 'Remove',
-          onPress: () => {
-            setTaskList(
-              (oldValue) => oldValue.filter((value) => value !== task)
-            );
-          },
+          onPress: () => setTaskList(
+            (oldValue) => oldValue.filter((v) => v !== task)
+          )
         },
       ],
     );
@@ -42,15 +40,11 @@ export function Home() {
   ]);
 
 
-
   // Aux
   let isVisible = false;
 
   return (
-    <SafeAreaView
-      edges={['bottom']}
-      style={{ flex: 1 }
-      }>
+    <SafeAreaView edges={['bottom']} style={{ flex: 1 }}>
       <StatusBar backgroundColor="blue" barStyle="dark-content" translucent />
       <View style={styles.container}>
         <Text style={styles.title}>Task List</Text>
@@ -62,7 +56,7 @@ export function Home() {
             placeholder='Add a new task'
             placeholderTextColor={AppColors.darkGray}
             keyboardType='email-address'
-            onChangeText={text => setNewTask(text)}
+            onChangeText={setNewTask}
             value={newTask}
           />
           <TouchableOpacity
